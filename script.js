@@ -1,96 +1,59 @@
 
-const myLibrary = [];
+const myLibrary = [{
+  title: "Babel",
+  author: "RF Kuang",
+}, {
+  title: "Kafka",
+  author: "Murakami",
+}];
 
 
-function Book (title, author, id = crypto.randomUUID() ) {
-    this.title = title;
-    this.author = author;
-    this.id = id;
+function Book (title, author) {
+  this.title = title;
+  this.author = author;
+}
+
+
+function addBookToLibrary(title, author) {
+  const newBook = new Book (title, author); 
+  myLibrary.push (newBook);
+  console.log(newBook)
   }
+  addBookToLibrary ();
 
-
-  
-function addBookToLibrary(title, author, id) {
-    const newBook = new Book (title, author, id); 
-    myLibrary.push (newBook);
-    console.log(newBook)
-    }
-    addBookToLibrary ();
-
-
-  // were trying to loop through the property and content of the array
-  //supposedly, the properties are from the Book
-  //the content is from the addbooktolibrary
-
-
-  for (let i = 0; i < myLibrary.length; i++) {
-    console.log(myLibrary[i]);
-  }
-
-// add the book title/author under the table
+// add the book title/author in the table
 const table = document.querySelector('.table');
 const tableBody = document.createElement ('tbody');
 table.appendChild(tableBody);
 
-myLibrary.forEach(function (addBookToLibrary){
-  const tableRow = document.createElement ('tr');
-  tableBody.appendChild(tableRow);
 
-  myLibrary.forEach(function (bookList) {
-    const tableData = document.createElement('td');
-    tableRow.appendChild(tableData);
-    tableData.textContent = addBookToLibrary[bookList];
+myLibrary.forEach(book => {
+  let row = document.createElement ('tr');
+
+  Object.values(book).forEach(text => {
+    let cell = document.createElement('td');
+    let textNode = document.createTextNode(text); //inserts text to the td
+    cell.appendChild(textNode); //appending the text to the td
+    row.appendChild(cell); //append the td to the row
   })
 
-
-
-
-  // const tableData = document.createElement('td');
-  // tableRow.appendChild(tableData);
-  // tableData.textContent = JSON.stringify(addBookToLibrary);
-});
-
-
-// const table = document.querySelector('.table');
-// const tableBody = document.createElement ('tbody');
-// const tableRow = document.createElement ('tr');
-// tableBody.appendChild(tableRow);
-// table.appendChild(tableBody);
-// myLibrary.forEach(function (addBookToLibrary){
-//   const tableData = document.createElement('td');
-//   tableRow.appendChild(tableData);
-//   tableData.textContent = JSON.stringify(addBookToLibrary);
-// });
-
-
-
-
-// items.forEach(function(foodItem) {
-//   var foodRow = document.createElement("tr");
-//   tableBody.appendChild(foodRow);
-//   propertyList.forEach(function(propertyName) {
-//     var foodProperty = document.createElement("td");
-//     foodRow.appendChild(foodProperty);
-//     if (propertyName === "imageSrc") {
-//       var image = document.createElement("img");
-//       foodProperty.appendChild(image);
-//       image.src = foodItem[propertyName];
-//       image.alt = foodItem[propertyName];
-//     } else {
-//       foodProperty.textContent = foodItem[propertyName];
-//     }
-//   });
-// });
+  tableBody.appendChild(row); // appends row to table body
+})
 
 
 ///unresolved yet
 
-// const dialog = document.querySelector('dialog');
-// const showBtn = document.querySelector('.newBook');
-// const closeBtn = document.querySelector('dialog button');
+const button = document.createElement('button');
+const body = document.querySelector
 
-// showBtn.addEventListener('click', () => {
-//   dialog.showModal();
-// })
+
+const dialog = document.querySelector('dialog');
+const showBtn = document.querySelector('.newBook');
+const closeBtn = document.querySelector('dialog button');
+
+
+showBtn.addEventListener('click', () => {
+  dialog.showModal();
+})
 
 
