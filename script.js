@@ -26,40 +26,17 @@ function addBookToLibrary(title, author, id) {
   }
   addBookToLibrary ();
 
-
-  
 // add the book title/author in the table
 const table = document.querySelector('.table');
 const tableBody = document.createElement ('tbody');
 table.appendChild(tableBody);
-
-
-let {title, author, ...book} = myLibrary;
-console.log(myLibrary);
-
-// myLibrary.forEach(book => {
-//   let row = document.createElement ('tr');
-
-
-//   Object.values(book).forEach(text => {  
-//     let cell = document.createElement('td');
-//     let textNode = document.createTextNode(text); //inserts text to the td
-
-//       cell.appendChild(textNode); //appending the text to the td
-//       row.appendChild(cell); //append the td to the row
-    
-//   })
-
-//   tableBody.appendChild(row); // appends row to table body
-// })
-
 
 myLibrary.forEach(book => {
   let row = document.createElement ('tr');
 
 
   Object.values(book).forEach(text => {
-    if (text === "RF Kuang"){
+    if (text === book.author || text === book.title ){ 
       let cell = document.createElement('td');
       let textNode = document.createTextNode(text); //inserts text to the td
 
