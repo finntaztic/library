@@ -2,12 +2,10 @@
 const myLibrary = [{
   title: "Babel",
   author: "RF Kuang",
-  id: crypto.randomUUID()
   
 }, {
   title: "Kafka",
   author: "Murakami",
-  id: crypto.randomUUID()          
 }];
 
 
@@ -15,9 +13,7 @@ function Book (title, author, id = crypto.randomUUID()) {
   this.title = title;
   this.author = author;
   this.id = id;
-
 }
-
 
 
 function addBookToLibrary(title, author, id) {
@@ -29,28 +25,25 @@ function addBookToLibrary(title, author, id) {
 
 // add the book title/author in the table
 const table = document.querySelector('.table');
-
 const tableBody = document.createElement ('tbody');
 table.appendChild(tableBody);
 
 
-myLibrary.forEach(book => {
+let {title, author, ...bookProperty} = myLibrary;
+console.log(myLibrary);
+
+
+
+
+myLibrary.forEach(bookRows => { //will show book rows
+  console.log(bookRows)
   let row = document.createElement ('tr');
-
   
-
-  Object.values(book).forEach(text => {
-    console.log(Object.values(book))
     let cell = document.createElement('td');
-    let textNode = document.createTextNode(text); //inserts text to the td
+    let textNode = document.createTextNode(JSON.stringify(bookProperty.value)); //inserts text to the td
 
-      cell.appendChild(textNode); //appending the text to the td
-      row.appendChild(cell); //append the td to the row
-
-      
-    
-  })
-
+  cell.appendChild(textNode); //appending the text to the td
+  row.appendChild(cell); //append the td to the ro
   tableBody.appendChild(row); // appends row to table body
 })
 
