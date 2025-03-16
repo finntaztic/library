@@ -2,10 +2,13 @@
 const myLibrary = [{
   title: "Babel",
   author: "RF Kuang",
+  id: crypto.randomUUID()
   
 }, {
   title: "Kafka",
   author: "Murakami",
+  id: crypto.randomUUID()
+
 }];
 
 
@@ -23,46 +26,49 @@ function addBookToLibrary(title, author, id) {
   }
   addBookToLibrary ();
 
+
+  
 // add the book title/author in the table
 const table = document.querySelector('.table');
 const tableBody = document.createElement ('tbody');
 table.appendChild(tableBody);
 
 
-let {title, author, ...bookProperty} = myLibrary;
+let {title, author, ...book} = myLibrary;
 console.log(myLibrary);
 
+// myLibrary.forEach(book => {
+//   let row = document.createElement ('tr');
 
 
+//   Object.values(book).forEach(text => {  
+//     let cell = document.createElement('td');
+//     let textNode = document.createTextNode(text); //inserts text to the td
 
-myLibrary.forEach(bookRows => { //will show book rows
-  console.log(bookRows)
-  let row = document.createElement ('tr');
-  
-    let cell = document.createElement('td');
-    let textNode = document.createTextNode(JSON.stringify(bookProperty.value)); //inserts text to the td
+//       cell.appendChild(textNode); //appending the text to the td
+//       row.appendChild(cell); //append the td to the row
+    
+//   })
 
-  cell.appendChild(textNode); //appending the text to the td
-  row.appendChild(cell); //append the td to the ro
-  tableBody.appendChild(row); // appends row to table body
-})
-
-
-///unresolved yet
-
-const button = document.createElement('button');
-const body = document.querySelector ('body');
-body.appendChild(button);
-button.textContent = "New Book";
-
-
-
-// const dialog = document.querySelector('dialog');
-// const closeBtn = document.querySelector('dialog button');
-
-
-// showBtn.addEventListener('click', () => {
-//   dialog.showModal();
+//   tableBody.appendChild(row); // appends row to table body
 // })
 
 
+myLibrary.forEach(book => {
+  let row = document.createElement ('tr');
+
+
+  Object.values(book).forEach(text => {
+    if (text === "RF Kuang"){
+      let cell = document.createElement('td');
+      let textNode = document.createTextNode(text); //inserts text to the td
+
+      cell.appendChild(textNode); //appending the text to the td
+      row.appendChild(cell); //append the td to the row
+    } else return {};
+    
+  })
+
+  tableBody.appendChild(row); // appends row to table body
+
+})
