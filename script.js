@@ -24,7 +24,6 @@ function addBookToLibrary(title, author, id) {
   myLibrary.push (newBook);
   console.log(newBook)
   }
-  addBookToLibrary ();
 
 // add the book title/author in the table
 const table = document.querySelector('.table');
@@ -58,11 +57,53 @@ newBtn.textContent = 'New Button'
 
 const dialog = document.createElement('dialog')
 const closeBtn = document.createElement ('button')
+closeBtn.textContent = 'X';
 const p = document.createElement('p')
-p.textContent = "This modal dialog has a groovy backdrop!";
+p.textContent = "Add the book you read 😍";
 body.appendChild(dialog)
+
 dialog.appendChild(closeBtn)
 dialog.appendChild(p)
+
+const form = document.createElement ('form');
+dialog.appendChild(form);
+
+const labelTitle = document.createElement('label');
+labelTitle.setAttribute ('for', 'book_title');
+labelTitle.textContent = 'Title';
+
+const inputTitle = document.createElement('input');
+inputTitle.setAttribute('type', 'text', 'id', 'book_title')
+
+const labelAuthor = document.createElement('label');
+
+const bookTitle = document.createElement('input');
+const bookAuthor = document.createElement('input');
+bookTitle.setAttribute ('type', 'text');
+bookAuthor.setAttribute ('type', 'text');
+
+
+const pTitle = document.createElement('p');
+pTitle.setAttribute = 'Title'
+
+pTitle.textContent = 'Title'
+const pAuthor = document.createElement('p');
+pAuthor.textContent = 'Author'
+
+
+labelTitle.appendChild(pTitle);
+labelTitle.appendChild(bookTitle);
+
+
+labelAuthor.appendChild(pAuthor);
+labelAuthor.appendChild(bookAuthor);
+
+form.appendChild(labelTitle);
+form.appendChild(labelAuthor);
+
+const addBookBtn = document.createElement('button');
+form.appendChild(addBookBtn);
+addBookBtn.textContent = 'Add book'
 
 
 newBtn.addEventListener("click", () => {
@@ -73,3 +114,13 @@ newBtn.addEventListener("click", () => {
 closeBtn.addEventListener("click", () => {
   dialog.close();
 });
+
+closeBtn.addEventListener("click", () => {
+  dialog.close();
+});
+
+
+let titleInput = '';
+let authorInput = '';
+
+addBookBtn.addEventListener("click", addBookToLibrary)
