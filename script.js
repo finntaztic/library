@@ -55,6 +55,8 @@ const body = document.querySelector('body');
 body.appendChild(newBtn);
 newBtn.textContent = 'New Button'
 
+//dialog part
+
 const dialog = document.createElement('dialog')
 const closeBtn = document.createElement ('button')
 closeBtn.textContent = 'X';
@@ -68,42 +70,45 @@ dialog.appendChild(p)
 const form = document.createElement ('form');
 dialog.appendChild(form);
 
+//title
+
 const labelTitle = document.createElement('label');
-labelTitle.setAttribute ('for', 'book_title');
-labelTitle.textContent = 'Title';
+labelTitle.setAttribute ('for', 'book_author');
+labelTitle.innerHTML = 'Title';
 
 const inputTitle = document.createElement('input');
-inputTitle.setAttribute('type', 'text', 'id', 'book_title')
+inputTitle.setAttribute ('type', 'text', 'id', 'book_author');
 
-const labelAuthor = document.createElement('label');
-
-const bookTitle = document.createElement('input');
-const bookAuthor = document.createElement('input');
-bookTitle.setAttribute ('type', 'text');
-bookAuthor.setAttribute ('type', 'text');
-
-
-const pTitle = document.createElement('p');
-pTitle.setAttribute = 'Title'
-
-pTitle.textContent = 'Title'
-const pAuthor = document.createElement('p');
-pAuthor.textContent = 'Author'
-
-
-labelTitle.appendChild(pTitle);
-labelTitle.appendChild(bookTitle);
-
-
-labelAuthor.appendChild(pAuthor);
-labelAuthor.appendChild(bookAuthor);
+const br1 = document.createElement('br');
 
 form.appendChild(labelTitle);
-form.appendChild(labelAuthor);
+form.appendChild(inputTitle);
 
-const addBookBtn = document.createElement('button');
+form.appendChild(br1);
+
+
+//author
+
+const labelAuthor = document.createElement('label');
+labelAuthor.setAttribute ('type', 'text','for', 'book_author');
+labelAuthor.innerHTML = 'Author';
+
+const inputAuthor = document.createElement('input');
+inputAuthor.setAttribute ('type', 'text', 'id', 'book_author');
+
+const br2 = document.createElement('br');
+
+form.appendChild(labelAuthor);
+form.appendChild(inputAuthor);
+
+form.appendChild(br2);
+
+
+
+const addBookBtn = document.createElement('input');
 form.appendChild(addBookBtn);
-addBookBtn.textContent = 'Add book'
+addBookBtn.setAttribute ('type', 'submit','value', 'submit');
+addBookBtn.innerHTML = 'Add Book';
 
 
 newBtn.addEventListener("click", () => {
@@ -115,12 +120,14 @@ closeBtn.addEventListener("click", () => {
   dialog.close();
 });
 
-closeBtn.addEventListener("click", () => {
-  dialog.close();
-});
 
 
-let titleInput = '';
-let authorInput = '';
 
-addBookBtn.addEventListener("click", addBookToLibrary)
+//first, i need to create the add book btn where the clg will give the title and the author
+
+
+
+addBookBtn.addEventListener("click", (e) => {
+  e.preventDefault();
+  console.log(inputTitle.value);
+})
