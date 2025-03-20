@@ -1,15 +1,16 @@
 
-const myLibrary = [{
-  title: "Babel",
-  author: "RF Kuang",
-  id: crypto.randomUUID()
-}, {
-  title: "Kafka",
-  author: "Murakami",
-  id: crypto.randomUUID()
-}];
+const myLibrary = [
+//   {
+//   title: "Babel",
+//   author: "RF Kuang",
+//   id: crypto.randomUUID()
+// }, {
+//   title: "Kafka",
+//   author: "Murakami",
+//   id: crypto.randomUUID()
+// }
+];
 
-console.log(myLibrary)
 
 
 
@@ -96,113 +97,50 @@ function Book (title, author, id = crypto.randomUUID()) {
 }
 
 
+    // add the book title/author in the table -- has to be fixed
+    const table = document.querySelector('.table');
+    const tableBody = document.createElement ('tbody');
+    table.appendChild(tableBody);
 
-function addBookToLibrary() {
 
-  let title = inputTitle.value;
-  let author = inputAuthor.value;
-  let id = crypto.randomUUID(); 
+
+    function addBookToLibrary() {
+
+      let title = inputTitle.value;
+      let author = inputAuthor.value;
+      let id = crypto.randomUUID(); 
+      
+      let newBook = new Book (title, author, id); 
+      myLibrary.push (newBook);
+
+      myLibrary.forEach(book => {
+        let row = document.createElement ('tr');
+      
+        Object.values(book).forEach(text => {
+          if (text === book.author || text === book.title ){ 
+            let cell = document.createElement('td');
+            let textNode = document.createTextNode(text); //inserts text to the td
+      
+            cell.appendChild(textNode); //appending the text to the td
+            row.appendChild(cell); //append the td to the row
+          } else return {};
+        })
+        tableBody.appendChild(row); // appends row to table body
+      });
+      
+        }
   
-  let newBook = new Book (title, author, id); 
-  myLibrary.push (newBook);
-  console.log(myLibrary.push (newBook)) ;
-  console.log(myLibrary);
 
-
-  // add the book title/author in the table -- has to be fixed
-const table = document.querySelector('.table');
-const tableBody = document.createElement ('tbody');
-table.appendChild(tableBody);
-
-myLibrary.forEach(book => {
-  let row = document.createElement ('tr');
-  Object.values(book).forEach(text => {
-    if (text === book.author || text === book.title ){ 
-      let cell = document.createElement('td');
-      let textNode = document.createTextNode(text); //inserts text to the td
-
-      cell.appendChild(textNode); //appending the text to the td
-      row.appendChild(cell); //append the td to the row
-    } else return {};
-  })
-  tableBody.appendChild(row); // appends row to table body
+addBookBtn.addEventListener("click", (e) => {
+  e.preventDefault();
+  addBookToLibrary ();
 });
-  }
-
-  addBookBtn.addEventListener("click", (e) => {
-    e.preventDefault();
-     addBookToLibrary ();
-  });
 
 
-// make the addbookbutton work 
-//pass the value of the input to the addbookto library
-  
-  // function addBookToLibrary(title, author, id) {
-  //   const newBook = new Book (title, author, id); 
-  //   myLibrary.push (newBook);
-  //   console.log(title)
-  //   console.log(author)
-  //   }
-  //   addBookToLibrary ();
+//the problem is that this foreach is that its trying to put
+//everything thats in the array to new row, so what we have to do
+//is only the newBook should be added in the row
 
-//revisit the course, the argument is actaulyl the function hello() { 
-  //   console.log(arguments[0]); 
-  // } 
-    
-  // hello("GFG"); the gfg is the ARGUMENT HERE
+//so i think we have to modify what elements get added to rows
+//maybe you need to modify the addbooktolibrary
 
-  // addBookBtn.addEventListener("click", addBookToLibrary);
-
-
-
-
-
-
-
-//first, i need to create the add book btn where the clg will give the title and the author
-
-//second, i need to store the value of the input to the javascript constructor
-
-
-
-
-
-
-// function Book (title, author, id) {
-//   this.title = title;
-//   console.log(title)
-//   this.author = author;
-//   this.id = id;
-//   console.log(this.id)
-//   console.log(id)
-
-// }
-// Book ();
-
-// let title = inputTitle.value;
-// let author = inputAuthor.value;
-// let id = crypto.randomUUID();
-
-// function addBookToLibrary(title, author, id) {
-//   const newBook = new Book (title, author, id); 
-//   myLibrary.push (newBook);
-//   console.log(newBook)
-//   }
-//   addBookToLibrary ();
-
-  // function createPerson() {
-  //   var name = document.getElementById('inputValueName').value;
-  //   var age = document.getElementById('inputValueAge').value;
-  //   var state = document.getElementById('inputValueState').value;
-  
-  //   function person(name, age, state) {
-  //     this.name = name;
-  //     this.age = age;
-  //     this.age = age;
-  //     this.state = state;
-  //   }
-  //   var NewPerson = new person(name, age, state);
-  
-  //   console.log(NewPerson);
-  // }
