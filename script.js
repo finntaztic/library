@@ -3,62 +3,17 @@ const myLibrary = [{
   title: "Babel",
   author: "RF Kuang",
   id: crypto.randomUUID()
-  
 }, {
   title: "Kafka",
   author: "Murakami",
   id: crypto.randomUUID()
 }];
 
-
-// add the book title/author in the table
-const table = document.querySelector('.table');
-const tableBody = document.createElement ('tbody');
-table.appendChild(tableBody);
-
-myLibrary.forEach(book => {
-  let row = document.createElement ('tr');
-
-
-  Object.values(book).forEach(text => {
-    if (text === book.author || text === book.title ){ 
-      let cell = document.createElement('td');
-      let textNode = document.createTextNode(text); //inserts text to the td
-
-      cell.appendChild(textNode); //appending the text to the td
-      row.appendChild(cell); //append the td to the row
-    } else return {};
-    
-  })
-
-  tableBody.appendChild(row); // appends row to table body
-
-});
-
-
-// let title = inputTitle.value;
-// let author = inputAuthor.value;
-// let id = crypto.randomUUID();
-
-// function Book (title, author, id = crypto.randomUUID()) {
-//   this.title = title;
-//   this.author = author;
-//   this.id = id;
-// }
-// Book ();
-// console.log(Book)
-
-
-// function addBookToLibrary(title, author, id) {
-//   const newBook = new Book (title, author, id); 
-//   myLibrary.push (newBook);
-//   console.log(newBook)
-//   }
-
-//   addBookToLibrary ();
+console.log(myLibrary)
 
 
 
+//form and dialog
 
 const newBtn = document.createElement('button');
 const body = document.querySelector('body');
@@ -134,14 +89,11 @@ closeBtn.addEventListener("click", () => {
 
 //adding book to library
 
-
-
 function Book (title, author, id = crypto.randomUUID()) {
   this.title = title;
   this.author = author;
   this.id = id;
 }
-
 
 
 
@@ -151,22 +103,35 @@ function addBookToLibrary() {
   let author = inputAuthor.value;
   let id = crypto.randomUUID(); 
   
-  const newBook = new Book (title, author, id); 
+  let newBook = new Book (title, author, id); 
   myLibrary.push (newBook);
-  
-  console.log(title) //undefined
-  console.log(author) //undefined
-  console.log(newBook) //Book {title: undefined, author: undefined, id: 'cc23e7e4-33c5-4063-9eba-a58165c32c2f'}
+  console.log(myLibrary.push (newBook)) ;
+  console.log(myLibrary);
+
+
+  // add the book title/author in the table -- has to be fixed
+const table = document.querySelector('.table');
+const tableBody = document.createElement ('tbody');
+table.appendChild(tableBody);
+
+myLibrary.forEach(book => {
+  let row = document.createElement ('tr');
+  Object.values(book).forEach(text => {
+    if (text === book.author || text === book.title ){ 
+      let cell = document.createElement('td');
+      let textNode = document.createTextNode(text); //inserts text to the td
+
+      cell.appendChild(textNode); //appending the text to the td
+      row.appendChild(cell); //append the td to the row
+    } else return {};
+  })
+  tableBody.appendChild(row); // appends row to table body
+});
   }
-  addBookToLibrary ();
-
-
-
 
   addBookBtn.addEventListener("click", (e) => {
     e.preventDefault();
-    addBookToLibrary ();
-
+     addBookToLibrary ();
   });
 
 
