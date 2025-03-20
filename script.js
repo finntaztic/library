@@ -8,22 +8,8 @@ const myLibrary = [{
   title: "Kafka",
   author: "Murakami",
   id: crypto.randomUUID()
-
 }];
 
-
-function Book (title, author, id = crypto.randomUUID()) {
-  this.title = title;
-  this.author = author;
-  this.id = id;
-}
-
-
-function addBookToLibrary(title, author, id) {
-  const newBook = new Book (title, author, id); 
-  myLibrary.push (newBook);
-  console.log(newBook)
-  }
 
 // add the book title/author in the table
 const table = document.querySelector('.table');
@@ -47,7 +33,31 @@ myLibrary.forEach(book => {
 
   tableBody.appendChild(row); // appends row to table body
 
-})
+});
+
+
+// let title = inputTitle.value;
+// let author = inputAuthor.value;
+// let id = crypto.randomUUID();
+
+// function Book (title, author, id = crypto.randomUUID()) {
+//   this.title = title;
+//   this.author = author;
+//   this.id = id;
+// }
+// Book ();
+// console.log(Book)
+
+
+// function addBookToLibrary(title, author, id) {
+//   const newBook = new Book (title, author, id); 
+//   myLibrary.push (newBook);
+//   console.log(newBook)
+//   }
+
+//   addBookToLibrary ();
+
+
 
 
 const newBtn = document.createElement('button');
@@ -103,8 +113,6 @@ form.appendChild(inputAuthor);
 
 form.appendChild(br2);
 
-
-
 const addBookBtn = document.createElement('input');
 form.appendChild(addBookBtn);
 addBookBtn.setAttribute ('type', 'submit','value', 'submit');
@@ -123,11 +131,113 @@ closeBtn.addEventListener("click", () => {
 
 
 
+
+//adding book to library
+
+
+
+function Book (title, author, id = crypto.randomUUID()) {
+  this.title = title;
+  this.author = author;
+  this.id = id;
+}
+
+
+
+
+function addBookToLibrary() {
+
+  let title = inputTitle.value;
+  let author = inputAuthor.value;
+  let id = crypto.randomUUID(); 
+  
+  const newBook = new Book (title, author, id); 
+  myLibrary.push (newBook);
+  
+  console.log(title) //undefined
+  console.log(author) //undefined
+  console.log(newBook) //Book {title: undefined, author: undefined, id: 'cc23e7e4-33c5-4063-9eba-a58165c32c2f'}
+  }
+  addBookToLibrary ();
+
+
+
+
+  addBookBtn.addEventListener("click", (e) => {
+    e.preventDefault();
+    addBookToLibrary ();
+
+  });
+
+
+// make the addbookbutton work 
+//pass the value of the input to the addbookto library
+  
+  // function addBookToLibrary(title, author, id) {
+  //   const newBook = new Book (title, author, id); 
+  //   myLibrary.push (newBook);
+  //   console.log(title)
+  //   console.log(author)
+  //   }
+  //   addBookToLibrary ();
+
+//revisit the course, the argument is actaulyl the function hello() { 
+  //   console.log(arguments[0]); 
+  // } 
+    
+  // hello("GFG"); the gfg is the ARGUMENT HERE
+
+  // addBookBtn.addEventListener("click", addBookToLibrary);
+
+
+
+
+
+
+
 //first, i need to create the add book btn where the clg will give the title and the author
 
+//second, i need to store the value of the input to the javascript constructor
 
 
-addBookBtn.addEventListener("click", (e) => {
-  e.preventDefault();
-  console.log(inputTitle.value);
-})
+
+
+
+
+// function Book (title, author, id) {
+//   this.title = title;
+//   console.log(title)
+//   this.author = author;
+//   this.id = id;
+//   console.log(this.id)
+//   console.log(id)
+
+// }
+// Book ();
+
+// let title = inputTitle.value;
+// let author = inputAuthor.value;
+// let id = crypto.randomUUID();
+
+// function addBookToLibrary(title, author, id) {
+//   const newBook = new Book (title, author, id); 
+//   myLibrary.push (newBook);
+//   console.log(newBook)
+//   }
+//   addBookToLibrary ();
+
+  // function createPerson() {
+  //   var name = document.getElementById('inputValueName').value;
+  //   var age = document.getElementById('inputValueAge').value;
+  //   var state = document.getElementById('inputValueState').value;
+  
+  //   function person(name, age, state) {
+  //     this.name = name;
+  //     this.age = age;
+  //     this.age = age;
+  //     this.state = state;
+  //   }
+  //   var NewPerson = new person(name, age, state);
+  
+  //   console.log(NewPerson);
+  // }
