@@ -1,16 +1,15 @@
 
 const myLibrary = [
-//   {
-//   title: "Babel",
-//   author: "RF Kuang",
-//   id: crypto.randomUUID()
-// }, {
-//   title: "Kafka",
-//   author: "Murakami",
-//   id: crypto.randomUUID()
-// }
+  {
+  title: "Babel",
+  author: "RF Kuang",
+  id: crypto.randomUUID()
+}, {
+  title: "Kafka",
+  author: "Murakami",
+  id: crypto.randomUUID()
+}
 ];
-
 
 
 
@@ -88,6 +87,7 @@ closeBtn.addEventListener("click", () => {
 
 
 
+
 //adding book to library
 
 function Book (title, author, id = crypto.randomUUID()) {
@@ -95,12 +95,6 @@ function Book (title, author, id = crypto.randomUUID()) {
   this.author = author;
   this.id = id;
 }
-
-
-    // add the book title/author in the table -- has to be fixed
-    const table = document.querySelector('.table');
-    const tableBody = document.createElement ('tbody');
-    table.appendChild(tableBody);
 
 
 
@@ -111,36 +105,109 @@ function Book (title, author, id = crypto.randomUUID()) {
       let id = crypto.randomUUID(); 
       
       let newBook = new Book (title, author, id); 
+
       myLibrary.push (newBook);
+      console.log(myLibrary);
+      console.log(newBook)
 
-      myLibrary.forEach(book => {
-        let row = document.createElement ('tr');
-      
-        Object.values(book).forEach(text => {
-          if (text === book.author || text === book.title ){ 
-            let cell = document.createElement('td');
-            let textNode = document.createTextNode(text); //inserts text to the td
-      
-            cell.appendChild(textNode); //appending the text to the td
-            row.appendChild(cell); //append the td to the row
-          } else return {};
-        })
-        tableBody.appendChild(row); // appends row to table body
-      });
-      
+      const table = document.querySelector('.table');
+      const tableBody = document.createElement ('tbody');
+      table.appendChild(tableBody);
+
+
+
         }
-  
 
-addBookBtn.addEventListener("click", (e) => {
-  e.preventDefault();
-  addBookToLibrary ();
-});
+        let iterations = myLibrary.length;
+
+        for (item of myLibrary)
+          {
+              if (!--iterations)
+                  console.log(item + " => This is the last iteration...");
+              else
+                  console.log(item);
+          }
+
+        
+        // function returnLast (arr) {
+        //   return arr.at (-1);
+        // }
+        // const itemLast = returnLast (myLibrary)
+        // console.log(itemLast)
+
+      //   function returnLast (arr) {
+
+      //     let row = document.createElement ('tr');
+
+          
+
+      //     const table = document.querySelector('.table');
+      //     const tableBody = document.createElement ('tbody');
+      //     table.appendChild(tableBody);
 
 
-//the problem is that this foreach is that its trying to put
-//everything thats in the array to new row, so what we have to do
-//is only the newBook should be added in the row
+      //     if (arr.at (-1)){
+      //       console.log(arr.at (-1))
+      //           let cell = document.createElement('td');
+      //           let textNode = document.createTextNode(text); //inserts text to the td
+          
+      //           cell.appendChild(textNode); //appending the text to the td
+      //           row.appendChild(cell); //append the td to the row
+              
+      //       } else return {};
+          
+      //     tableBody.appendChild(row); // appends row to table body
+      //     }
+      // returnLast ();
 
-//so i think we have to modify what elements get added to rows
-//maybe you need to modify the addbooktolibrary
 
+      // //sampple loop array
+
+      // function loveTheThrees (myArray) {
+
+      //   var myTotal = 0;
+        
+      //   for (var i = 0; i < myArray.length; i++) {
+      //     if (myArray[i] % 3 === 0) {
+      //       myTotal += myArray[i];
+      //       /* What I'm looking to do at this stage of the problem is place the results into a new array which will be returned rather than myTotal */
+      //   }
+      //   }
+        
+      //   return myTotal; // Placed this here just to test to see if the problem would post the results
+      //   }
+        
+      //   loveTheThrees ([1, 3, 5, 12, 21]);
+
+
+        addBookBtn.addEventListener("click", (e) => {
+          e.preventDefault();
+          returnLast ();
+          console.log(returnLast())
+        });
+        
+
+
+
+
+
+        // const table = document.querySelector('.table');
+        // const tableBody = document.createElement ('tbody');
+        // table.appendChild(tableBody);
+         
+        // myLibrary.forEach(book => {
+        //   let row = document.createElement ('tr');
+        //   Object.values(book).forEach(text => {
+        //     if (text === book.author || text === book.title ){ 
+        //       if (book.author !== myLibrary){
+        //         let cell = document.createElement('td');
+        //         let textNode = document.createTextNode(text); //inserts text to the td
+          
+        //         cell.appendChild(textNode); //appending the text to the td
+        //         row.appendChild(cell); //append the td to the row
+        //       } else return {};
+        //     } else return {};
+        //   })
+        //   tableBody.appendChild(row); // appends row to table body
+        
+        // });
