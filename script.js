@@ -107,26 +107,64 @@ function Book (title, author, id = crypto.randomUUID()) {
       let newBook = new Book (title, author, id); 
 
       myLibrary.push (newBook);
-      console.log(myLibrary);
-      console.log(newBook)
+
 
       const table = document.querySelector('.table');
       const tableBody = document.createElement ('tbody');
       table.appendChild(tableBody);
 
 
+      const last = myLibrary.at(-1);
 
+      console.log(last);
+
+      myLibrary.forEach(book => {
+      let row = document.createElement ('tr');
+
+      if (book === last){
+
+        Object.values(book).forEach(text => {
+          if (text === book.author || text === book.title ){
+            let cell = document.createElement('td');
+            let textNode = document.createTextNode(text); //inserts text to the td
+      
+            cell.appendChild(textNode); //appending the text to the td
+            row.appendChild(cell); //append the td to the row
+          } else return {};
+          
+        });
+          } else return {};
+
+          tableBody.appendChild(row);
+      // Object.values(book).forEach(text => {
+      //   if (text === last || text === last ){ 
+
+      //     console.log(last)
+      //       let cell = document.createElement('td');
+      //       let textNode = document.createTextNode(text); //inserts text to the td
+      
+      //       cell.appendChild(textNode); //appending the text to the td
+      //       row.appendChild(cell); //append the td to the row
+      //   } else return {};
+      // })
+      // tableBody.appendChild(row); // appends row to table body
+    
+    });
         }
 
-        let iterations = myLibrary.length;
+        // let iterations = myLibrary.length;
 
-        for (item of myLibrary)
-          {
-              if (!--iterations)
-                  console.log(item + " => This is the last iteration...");
-              else
-                  console.log(item);
-          }
+        // for (item of myLibrary)
+        //   {
+        //       if (!--iterations)
+        //           console.log(item + " => This is the last iteration...");
+        //       else
+        //           console.log(item);
+        //   }
+
+
+          //function that will add the last index to the rows
+
 
         
         // function returnLast (arr) {
@@ -182,8 +220,7 @@ function Book (title, author, id = crypto.randomUUID()) {
 
         addBookBtn.addEventListener("click", (e) => {
           e.preventDefault();
-          returnLast ();
-          console.log(returnLast())
+          addBookToLibrary ();
         });
         
 
