@@ -121,6 +121,8 @@ function Book (title, author, id = crypto.randomUUID()) {
       myLibrary.forEach(book => {
       let row = document.createElement ('tr');
 
+      
+
       if (book === last){
 
         Object.values(book).forEach(text => {
@@ -130,12 +132,21 @@ function Book (title, author, id = crypto.randomUUID()) {
       
             cell.appendChild(textNode); //appending the text to the td
             row.appendChild(cell); //append the td to the row
+
+            
+
           } else return {};
           
         });
           } else return {};
 
           tableBody.appendChild(row);
+          const btn = document.createElement ('button');
+          row.appendChild(btn);
+          btn.innerHTML = "Delete";
+
+
+          //the button should be connected to the uuid of the array 
     
     });
         }
@@ -148,9 +159,6 @@ function Book (title, author, id = crypto.randomUUID()) {
           addBookToLibrary ();
         });
         
-
-
-
 
 
  
