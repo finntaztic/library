@@ -136,86 +136,11 @@ function Book (title, author, id = crypto.randomUUID()) {
           } else return {};
 
           tableBody.appendChild(row);
-      // Object.values(book).forEach(text => {
-      //   if (text === last || text === last ){ 
-
-      //     console.log(last)
-      //       let cell = document.createElement('td');
-      //       let textNode = document.createTextNode(text); //inserts text to the td
-      
-      //       cell.appendChild(textNode); //appending the text to the td
-      //       row.appendChild(cell); //append the td to the row
-      //   } else return {};
-      // })
-      // tableBody.appendChild(row); // appends row to table body
     
     });
         }
 
-        // let iterations = myLibrary.length;
 
-        // for (item of myLibrary)
-        //   {
-        //       if (!--iterations)
-        //           console.log(item + " => This is the last iteration...");
-        //       else
-        //           console.log(item);
-        //   }
-
-
-          //function that will add the last index to the rows
-
-
-        
-        // function returnLast (arr) {
-        //   return arr.at (-1);
-        // }
-        // const itemLast = returnLast (myLibrary)
-        // console.log(itemLast)
-
-      //   function returnLast (arr) {
-
-      //     let row = document.createElement ('tr');
-
-          
-
-      //     const table = document.querySelector('.table');
-      //     const tableBody = document.createElement ('tbody');
-      //     table.appendChild(tableBody);
-
-
-      //     if (arr.at (-1)){
-      //       console.log(arr.at (-1))
-      //           let cell = document.createElement('td');
-      //           let textNode = document.createTextNode(text); //inserts text to the td
-          
-      //           cell.appendChild(textNode); //appending the text to the td
-      //           row.appendChild(cell); //append the td to the row
-              
-      //       } else return {};
-          
-      //     tableBody.appendChild(row); // appends row to table body
-      //     }
-      // returnLast ();
-
-
-      // //sampple loop array
-
-      // function loveTheThrees (myArray) {
-
-      //   var myTotal = 0;
-        
-      //   for (var i = 0; i < myArray.length; i++) {
-      //     if (myArray[i] % 3 === 0) {
-      //       myTotal += myArray[i];
-      //       /* What I'm looking to do at this stage of the problem is place the results into a new array which will be returned rather than myTotal */
-      //   }
-      //   }
-        
-      //   return myTotal; // Placed this here just to test to see if the problem would post the results
-      //   }
-        
-      //   loveTheThrees ([1, 3, 5, 12, 21]);
 
 
         addBookBtn.addEventListener("click", (e) => {
@@ -228,23 +153,4 @@ function Book (title, author, id = crypto.randomUUID()) {
 
 
 
-        // const table = document.querySelector('.table');
-        // const tableBody = document.createElement ('tbody');
-        // table.appendChild(tableBody);
-         
-        // myLibrary.forEach(book => {
-        //   let row = document.createElement ('tr');
-        //   Object.values(book).forEach(text => {
-        //     if (text === book.author || text === book.title ){ 
-        //       if (book.author !== myLibrary){
-        //         let cell = document.createElement('td');
-        //         let textNode = document.createTextNode(text); //inserts text to the td
-          
-        //         cell.appendChild(textNode); //appending the text to the td
-        //         row.appendChild(cell); //append the td to the row
-        //       } else return {};
-        //     } else return {};
-        //   })
-        //   tableBody.appendChild(row); // appends row to table body
-        
-        // });
+ 
