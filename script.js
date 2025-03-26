@@ -12,7 +12,6 @@ const myLibrary = [
 ];
 
 
-
 //form and dialog
 
 const newBtn = document.createElement('button');
@@ -83,11 +82,6 @@ closeBtn.addEventListener("click", () => {
   dialog.close();
 });
 
-
-
-
-
-
 //adding book to library
 
 function Book (title, author, id = crypto.randomUUID()) {
@@ -103,6 +97,7 @@ function Book (title, author, id = crypto.randomUUID()) {
       let title = inputTitle.value;
       let author = inputAuthor.value;
       let id = crypto.randomUUID(); 
+
       
       let newBook = new Book (title, author, id); 
 
@@ -116,12 +111,9 @@ function Book (title, author, id = crypto.randomUUID()) {
 
       const last = myLibrary.at(-1);
 
-      console.log(last);
 
       myLibrary.forEach(book => {
       let row = document.createElement ('tr');
-
-      
 
       if (book === last){
 
@@ -133,32 +125,39 @@ function Book (title, author, id = crypto.randomUUID()) {
             cell.appendChild(textNode); //appending the text to the td
             row.appendChild(cell); //append the td to the row
 
-            
+            row.setAttribute("class", `${book.id}`); 
 
           } else return {};
-          
         });
           } else return {};
 
           tableBody.appendChild(row);
+
+          //adding the delete button to each row
           const btn = document.createElement ('button');
           row.appendChild(btn);
           btn.innerHTML = "Delete";
+          btn.setAttribute("class", `del ${book.id}`); 
+          });
 
 
-          //the button should be connected to the uuid of the array 
-    
-    });
-        }
+          delBtn = document.querySelectorAll ('.del');
+          console.log(delBtn);
 
 
+          
 
+          for (var i = 0 ; i < delBtn.length; i++) {
+            delBtn[i].addEventListener('click' , funDel) ; 
+         }
+
+         function funDel (){
+          alert ('button is clicked')
+        };
+
+  };
 
         addBookBtn.addEventListener("click", (e) => {
           e.preventDefault();
           addBookToLibrary ();
         });
-        
-
-
- 
