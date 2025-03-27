@@ -138,22 +138,32 @@ function Book (title, author, id = crypto.randomUUID()) {
           row.appendChild(btn);
           btn.innerHTML = "Delete";
           btn.setAttribute("class", `del ${book.id}`); 
+          btn.setAttribute("onclick", "alert('Hi!')"); 
+
           });
 
 
-          delBtn = document.querySelectorAll ('.del');
-          console.log(delBtn);
+          // delBtn = document.querySelectorAll('.del');
+          // console.log(delBtn);
 
 
+          // delBtn.forEach((button) => {
+          //   button.addEventListener("click", (e) => {
           
+          //     //New code here
+          //     if ((e.target.class)) {
+          //       alert ('yow');
+          //     }
+          //     //
+          
+          //   });
+          // });
 
-          for (var i = 0 ; i < delBtn.length; i++) {
-            delBtn[i].addEventListener('click' , funDel) ; 
-         }
 
-         function funDel (){
-          alert ('button is clicked')
-        };
+          // delBtn.forEach(button => button.addEventListener('click', (e) => {
+          //   e.preventDefault();
+          //   return alert("test");
+          // }));
 
   };
 
@@ -161,3 +171,5 @@ function Book (title, author, id = crypto.randomUUID()) {
           e.preventDefault();
           addBookToLibrary ();
         });
+
+
