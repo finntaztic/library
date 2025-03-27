@@ -138,38 +138,28 @@ function Book (title, author, id = crypto.randomUUID()) {
           row.appendChild(btn);
           btn.innerHTML = "Delete";
           btn.setAttribute("class", `del ${book.id}`); 
-          btn.setAttribute("onclick", "alert('Hi!')"); 
+          btn.onclick = remBook;
 
           });
 
 
-          // delBtn = document.querySelectorAll('.del');
-          // console.log(delBtn);
-
-
-          // delBtn.forEach((button) => {
-          //   button.addEventListener("click", (e) => {
-          
-          //     //New code here
-          //     if ((e.target.class)) {
-          //       alert ('yow');
-          //     }
-          //     //
-          
-          //   });
-          // });
-
-
-          // delBtn.forEach(button => button.addEventListener('click', (e) => {
-          //   e.preventDefault();
-          //   return alert("test");
-          // }));
-
+          //from stack overflow, suprisingly worked with just copy paste lol
+          function remBook() {
+            const bookId = this.parentElement.classList[1];
+        
+            const findBook = myLibrary.findIndex(
+              (element) => element.bookId === bookId
+            );
+            const delBook = myLibrary.splice(findBook, 1);
+            this.parentElement.remove();
+          }
   };
 
         addBookBtn.addEventListener("click", (e) => {
           e.preventDefault();
           addBookToLibrary ();
         });
+
+
 
 
