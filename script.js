@@ -82,6 +82,10 @@ closeBtn.addEventListener("click", () => {
   dialog.close();
 });
 
+
+
+
+
 //adding book to library
 
 function Book (title, author, id = crypto.randomUUID()) {
@@ -89,8 +93,6 @@ function Book (title, author, id = crypto.randomUUID()) {
   this.author = author;
   this.id = id;
 }
-
-
 
     function addBookToLibrary() {
 
@@ -133,13 +135,44 @@ function Book (title, author, id = crypto.randomUUID()) {
 
           tableBody.appendChild(row);
 
+
+          //adding the read status to each row
+
+          const readBtn = document.createElement ('button');
+          row.appendChild (readBtn);
+          readBtn.innerHTML = 'Unread';
+
+
+          //prototype to change the book status to read
+
+          Book.prototype.status = 'read';
+          readBtn.onclick = readStatus;
+
+          function readStatus (){
+            readBtn.innerHTML = newBook.status;
+            console.log(readBtn.innerHTML = newBook.status);
+          }
+
+          //prototype to change the book status to read
+
+          Book.prototype.unstatus = 'unread';
+          readBtn.dblclick = unreadStatus;
+
+          function unreadStatus (){
+            readBtn.innerHTML = newBook.unstatus;
+            console.log(readBtn.innerHTML = newBook.status);
+          }
+
+
+
+
           //adding the delete button to each row
           const btn = document.createElement ('button');
           row.appendChild(btn);
           btn.innerHTML = "Delete";
           btn.setAttribute("class", `del ${book.id}`); 
-          btn.onclick = remBook;
 
+          btn.onclick = remBook;
           });
 
 
@@ -160,6 +193,12 @@ function Book (title, author, id = crypto.randomUUID()) {
           addBookToLibrary ();
         });
 
+
+//book prototype
+
+Book.prototype.status = {
+  status: 'read',
+}
 
 
 
