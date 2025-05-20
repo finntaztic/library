@@ -88,11 +88,19 @@ closeBtn.addEventListener("click", () => {
 
 //adding book to library
 
-function Book (title, author, id = crypto.randomUUID()) {
-  this.title = title;
-  this.author = author;
-  this.id = id;
+class Book {
+  constructor(title, author, id = crypto.randomUUID()){
+    this.title = title;
+    this.author = author;
+    this.id = id;
+  }
 }
+
+// function Book (title, author, id = crypto.randomUUID()){
+//   this.title = title;
+//   this.author = author;
+//   this.id = id;
+// }
 
     function addBookToLibrary() {
 
