@@ -14,6 +14,15 @@ class Book {
     this.#id = id;
   }
 
+  getBook (){
+    const newBtn = document.querySelector('.newBookBtn')
+    const dialog = document.querySelector('dialog')
+
+    newBtn.addEventListener("click", () => {
+    dialog.showModal();
+  });
+  }
+
   pushBook(){
     myLibrary.push ({
       title: this.#title,
@@ -26,22 +35,33 @@ class Book {
 
   //add books to table
   addBookToTable(){
-    const tr = document.querySelector('data');
+    const tr = document.querySelector('.data');
+    console.log(tr)
     const titleData = document.createElement('td')
-    const titleNode = document.createElement('hello')
+    const titleNode = document.createTextNode(this.#title)
 
     tr.appendChild(titleData);
     titleData.appendChild(titleNode)
     // titleData.innerHTML = this.#title
   }
+
+
+
 };
 
 myBook = new Book ('kafka on the shore', 'murakami')
 myBook.pushBook();
 myBook.addBookToTable();
+myBook.getBook()
 
 console.log(myLibrary);
 
+// const newBtn = document.querySelector('.newBookBtn')
+// const dialog = document.querySelector('dialog')
+
+// newBtn.addEventListener("click", () => {
+//   dialog.showModal();
+// });
 
 
 // const myLibrary = [
