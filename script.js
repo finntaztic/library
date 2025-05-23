@@ -37,7 +37,6 @@ class Book {
 
 
         //add the book to the webpage
-
         const tbody = document.querySelector('tbody')
         const tr = document.createElement('tr');
         const tdTitle = document.createElement('td');
@@ -91,3 +90,4 @@ myBook = new Book ()
 myBook.getBook()
 myBook.addBook()
 
+//you can make this code cleaner, just add all event listeners into one place
