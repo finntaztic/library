@@ -1,7 +1,4 @@
-
 const myLibrary = [];
-
-
 
 class Book {
   #title;
@@ -19,7 +16,7 @@ class Book {
     const dialog = document.querySelector('dialog')
 
     newBtn.addEventListener("click", () => {
-    dialog.showModal();
+      dialog.showModal();
   });
   }
 
@@ -34,17 +31,25 @@ class Book {
   //method for getting the info from the dialog
 
   //add books to table
+
   addBookToTable(){
     const tr = document.querySelector('.data');
-    console.log(tr)
-    const titleData = document.createElement('td')
-    const titleNode = document.createTextNode(this.#title)
+    const titleData = document.createElement('td');
+    const titleInput = document.querySelector('#title');
+    const titleNode = document.createTextNode(titleInput);
 
     tr.appendChild(titleData);
     titleData.appendChild(titleNode)
+
+    const addBook = document.querySelector('.addBookBtn');
+    console.log(addBook)
+    
+    addBook.addEventListener("click", () => {
+      console.log('button clicked')
+      // dialog.close();
+      });
     // titleData.innerHTML = this.#title
   }
-
 
 
 };
@@ -53,7 +58,7 @@ myBook = new Book ('kafka on the shore', 'murakami')
 myBook.pushBook();
 myBook.addBookToTable();
 myBook.getBook()
-
+// myBook.addBookToTable();
 console.log(myLibrary);
 
 // const newBtn = document.querySelector('.newBookBtn')
