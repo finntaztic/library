@@ -9,6 +9,11 @@
   opacity: 0.75;
 }
 
-table {
+/* table {
   
+} */
+
+input:invalid {
+  outline: red solid 3px;
 }
+

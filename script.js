@@ -28,8 +28,13 @@ class Book {
         const inputTitle = document.querySelector('#title')
         const inputAuthor = document.querySelector('#author')
 
-        this.#title = inputTitle.value;
-        this.#author = inputAuthor.value;
+        if (inputTitle.value === ''){
+          return;
+        } else {this.#title = inputTitle.value;}
+
+        if (inputAuthor.value === ''){
+          return;
+        } else {this.#author = inputAuthor.value;}
 
         //pushes the book to the library
         myBook = new Book (this.#title, this.#author, this.#id); 
@@ -85,6 +90,30 @@ class Book {
       })
   }
 };
+
+
+const inputText = document.getElementById('title');
+const authorText = document.getElementById('author');
+
+inputText.addEventListener('input', () => {
+  inputText.reportValidity();
+
+  if (inputText.validity.valid || authorText.validity.valid){
+    log('input ok');
+  } else if (inputText.validity.valueMissing || authorText.validity.valueMissing){
+    log ('required field cannot be empty')
+  }
+})
+
+// authorText.addEventListener('input', () => {
+//   authorText.reportValidity();
+
+//   if (authorText.validity.valid){
+//     log('input ok');
+//   } else if (authorText.validity.valueMissing){
+//     log ('required field cannot be empty')
+//   }
+// })
 
 myBook = new Book ()
 myBook.getBook()
