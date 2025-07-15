@@ -98,22 +98,22 @@ const authorText = document.getElementById('author');
 inputText.addEventListener('input', () => {
   inputText.reportValidity();
 
-  if (inputText.validity.valid || authorText.validity.valid){
+  if (inputText.validity.valid){
     log('input ok');
-  } else if (inputText.validity.valueMissing || authorText.validity.valueMissing){
+  } else if (inputText.validity.valueMissing){
     log ('required field cannot be empty')
   }
 })
 
-// authorText.addEventListener('input', () => {
-//   authorText.reportValidity();
+authorText.addEventListener('input', () => {
+  authorText.reportValidity();
 
-//   if (authorText.validity.valid){
-//     log('input ok');
-//   } else if (authorText.validity.valueMissing){
-//     log ('required field cannot be empty')
-//   }
-// })
+  if (authorText.validity.valid){
+    log('input ok');
+  } else if (authorText.validity.valueMissing){
+    log ('required field cannot be empty')
+  }
+})
 
 myBook = new Book ()
 myBook.getBook()
